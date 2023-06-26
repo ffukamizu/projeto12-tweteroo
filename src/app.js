@@ -37,8 +37,6 @@ app.get('/tweets', (req, res) => {
             tweet: index.tweet,
         }))
     );
-
-    res.status(200).send('Ok');
 });
 
 app.listen(port, () => console.log(`Server is online, utilizing port: ${port}`));
