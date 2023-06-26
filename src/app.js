@@ -8,13 +8,24 @@ app.use(cors());
 
 //global users and tweets
 const userList = [];
-// const tweetList = [];
+const tweetList = [];
 
 app.post('/sign-up', (req, res) => {
-    const {username, avatar} = req.body;
+    const { username, avatar } = req.body;
 
     userList.push({ username, avatar });
     res.status(201).send('Ok');
-})
+});
 
-app.listen(port, (() => console.log(`Server is online, utilizing port: ${port}`)));
+app.post('/tweets', (req, res) => {
+    const { username, tweet } = req.body;
+
+    if (userList.find((user) => user.username === username)) {
+        res.status(201).send('Ok');
+        tweetList.push({ username, tweet });
+    } else {
+        res.status(401).send('UNAUTHORIZED');
+    }
+});
+
+app.listen(port, () => console.log(`Server is online, utilizing port: ${port}`));
