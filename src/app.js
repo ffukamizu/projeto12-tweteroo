@@ -14,6 +14,7 @@ app.post('/sign-up', (req, res) => {
     const { username, avatar } = req.body;
 
     userList.push({ username, avatar });
+    
     res.status(201).send('Ok');
 });
 
@@ -36,6 +37,8 @@ app.get('/tweets', (req, res) => {
             tweet: index.tweet,
         }))
     );
+
+    res.status(201).send('Ok');
 });
 
 app.listen(port, () => console.log(`Server is online, utilizing port: ${port}`));
