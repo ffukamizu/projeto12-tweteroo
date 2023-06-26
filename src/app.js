@@ -28,4 +28,8 @@ app.post('/tweets', (req, res) => {
     }
 });
 
+app.get('/tweets', (req, res) => {
+    
+});
+
 app.listen(port, () => console.log(`Server is online, utilizing port: ${port}`));
