@@ -29,7 +29,13 @@ app.post('/tweets', (req, res) => {
 });
 
 app.get('/tweets', (req, res) => {
-    
+    res.send(
+        tweetList.slice(-10).map((index) => ({
+            username: index.username,
+            avatar: userList.find((user) => user.username === index.username).avatar,
+            tweet: index.tweet,
+        }))
+    );
 });
 
 app.listen(port, () => console.log(`Server is online, utilizing port: ${port}`));
